@@ -1,16 +1,7 @@
 const canvas = document.querySelector("#canvas");
-const ctx = canvas.getContext("2d");
+const strokeSize = document.querySelector("#strokeSize");
 
-const colors = [
-  "#000000",
-  "#FFFFFF",
-  "#8A39E1",
-  "#F76E11",
-  "#2666CF",
-  "#FFE162",
-  "#FF6464",
-  "#91C483",
-];
+const ctx = canvas.getContext("2d");
 
 const resize = () => {
   canvas.width =
@@ -20,10 +11,10 @@ const resize = () => {
 };
 
 window.onload = () => {
-  colors.forEach((color, index) => {
-    document.querySelector(`.color${index + 1}`).style.backgroundColor = color;
-  });
   resize();
+  document.querySelectorAll(".color").forEach((el) => {
+    el.addEventListener("click", changeColor);
+  });
 };
 
 window.onresize = () => {
@@ -31,10 +22,18 @@ window.onresize = () => {
 };
 
 let isDrawing = false;
-let selectedColor = colors[0];
+let selectedColor = "black";
+let selectedSize = 5;
+
+strokeSize.addEventListener("input", (e) => {
+  selectedSize = e.target.value;
+  document.querySelector(
+    ".sizeLabel"
+  ).textContent = `Pen Size: ${e.target.value}`;
+});
 
 const configureContext = () => {
-  ctx.lineWidth = 20;
+  ctx.lineWidth = selectedSize;
   ctx.lineCap = "round";
   ctx.strokeStyle = selectedColor;
 };
@@ -61,8 +60,8 @@ const draw = (e) => {
   ctx.moveTo(e.clientX, e.clientY);
 };
 
-const changeColor = (color) => {
-  selectedColor = color;
+const changeColor = (e) => {
+  selectedColor = e.target.style.backgroundColor;
 };
 
 canvas.addEventListener("mousedown", beginDrawing);
