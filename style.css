@@ -57,9 +57,28 @@ body {
 }
 
 button {
-  font-size: larger;
+  font-size: large;
   padding: 5px 20px;
   cursor: pointer;
-  width: 150px;
+  width: 110px;
   height: 50px;
+}
+
+@media (max-width: 600px) {
+  #tools {
+    flex-direction: column;
+    height: 170px;
+    top: 0;
+  }
+  .color {
+    height: 30px;
+    width: 30px;
+    margin: 5px;
+  }
+  button {
+    margin-bottom: 10px;
+  }
+  input {
+    margin-top: 10px;
+  }
 }

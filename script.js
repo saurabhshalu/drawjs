@@ -63,12 +63,21 @@ const draw = (e) => {
     return;
   }
 
-  ctx.lineTo(e.clientX, e.clientY);
+  ctx.lineTo(
+    e.clientX || e.touches[0].clientX,
+    e.clientY || e.touches[0].clientY
+  );
   ctx.stroke();
   ctx.beginPath();
-  ctx.moveTo(e.clientX, e.clientY);
+  ctx.moveTo(
+    e.clientX || e.touches[0].clientX,
+    e.clientY || e.touches[0].clientY
+  );
 };
 
 canvas.addEventListener("mousedown", beginDrawing);
+canvas.addEventListener("touchstart", beginDrawing, { passive: true });
 canvas.addEventListener("mouseup", endDrawing);
+canvas.addEventListener("touchend", endDrawing, { passive: true });
 canvas.addEventListener("mousemove", draw);
+canvas.addEventListener("touchmove", draw, { passive: true });
