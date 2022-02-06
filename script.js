@@ -1,6 +1,7 @@
 const canvas = document.querySelector("#canvas");
 const strokeSize = document.querySelector("#strokeSize");
 const clearButton = document.querySelector("#clear");
+const saveButton = document.querySelector("#save");
 
 const ctx = canvas.getContext("2d");
 
@@ -39,6 +40,14 @@ strokeSize.addEventListener("input", (e) => {
 
 clearButton.addEventListener("click", () => {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
+
+saveButton.addEventListener("click", () => {
+  const image = canvas.toDataURL();
+  const link = document.createElement("a");
+  link.href = image;
+  link.download = "DrawJS";
+  link.click();
 });
 
 const configureContext = () => {
