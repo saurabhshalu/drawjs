@@ -1,5 +1,6 @@
 const canvas = document.querySelector("#canvas");
 const strokeSize = document.querySelector("#strokeSize");
+const clearButton = document.querySelector("#clear");
 
 const ctx = canvas.getContext("2d");
 
@@ -8,6 +9,10 @@ const resize = () => {
     document.documentElement.clientWidth || document.body.clientWidth;
   canvas.height =
     document.documentElement.clientHeight || document.body.clientHeight;
+};
+
+const changeColor = (e) => {
+  selectedColor = e.target.style.backgroundColor;
 };
 
 window.onload = () => {
@@ -30,6 +35,10 @@ strokeSize.addEventListener("input", (e) => {
   document.querySelector(
     ".sizeLabel"
   ).textContent = `Pen Size: ${e.target.value}`;
+});
+
+clearButton.addEventListener("click", () => {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
 const configureContext = () => {
@@ -58,10 +67,6 @@ const draw = (e) => {
   ctx.stroke();
   ctx.beginPath();
   ctx.moveTo(e.clientX, e.clientY);
-};
-
-const changeColor = (e) => {
-  selectedColor = e.target.style.backgroundColor;
 };
 
 canvas.addEventListener("mousedown", beginDrawing);
