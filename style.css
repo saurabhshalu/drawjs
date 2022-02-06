@@ -1,0 +1,40 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+}
+
+#tools {
+  height: 100px;
+  width: 100%;
+  background-color: lightgray;
+  border-radius: 10px 10px 0px 0px;
+  position: absolute;
+  bottom: 0;
+}
+
+#canvas {
+  position: absolute;
+}
+
+#colors {
+  display: flex;
+}
+
+.color {
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  margin: 10px;
+}
