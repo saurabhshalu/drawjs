@@ -91,9 +91,6 @@ button {
     height: 170px;
     top: 0;
   }
-  #canvas {
-    top: 170px;
-  }
 
   .color {
     height: 30px;
