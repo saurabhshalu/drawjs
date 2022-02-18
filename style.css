@@ -36,6 +36,11 @@ body {
   z-index: 2;
 }
 
+#modeImg {
+  height: 50px;
+  width: 50px;
+}
+
 #tools {
   height: 100px;
   width: 100%;
@@ -52,6 +57,17 @@ body {
   position: absolute;
 }
 
+.canvasContainer {
+  cursor: url(https://img.icons8.com/ios-filled/50/000000/pencil-tip.png) 0 50,
+    auto;
+}
+
+#colors {
+  align-items: center;
+}
+#colors img {
+  cursor: pointer;
+}
 #colors,
 .size {
   display: flex;
@@ -96,6 +112,11 @@ button {
     height: 30px;
     width: 30px;
     margin: 5px;
+  }
+
+  #modeImg {
+    height: 30px;
+    width: 30px;
   }
   button {
     margin-bottom: 10px;

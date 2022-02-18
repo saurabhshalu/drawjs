@@ -3,6 +3,10 @@ const strokeSize = document.querySelector("#strokeSize");
 const clearButton = document.querySelector("#clear");
 const saveButton = document.querySelector("#save");
 
+const modeImg = document.querySelector("#modeImg");
+
+let pencil = true;
+
 const ctx = canvas.getContext("2d");
 
 const resize = () => {
@@ -84,9 +88,27 @@ const draw = (e) => {
   );
 };
 
+const changeMode = () => {
+  if (pencil === true) {
+    selectedSize = 30;
+    selectedColor = "#FFFFFF";
+    modeImg.src = "https://img.icons8.com/ios-filled/50/000000/pencil-tip.png";
+    document.querySelector(".canvasContainer").style.cursor =
+      " url(https://img.icons8.com/ios-filled/50/000000/eraser.png) 25 25, auto";
+  } else {
+    selectedSize = strokeSize.value;
+    selectedColor = "#000000";
+    modeImg.src = "https://img.icons8.com/ios-filled/50/000000/eraser.png";
+    document.querySelector(".canvasContainer").style.cursor =
+      " url(https://img.icons8.com/ios-filled/50/000000/pencil-tip.png) 0 50, auto";
+  }
+  pencil = !pencil;
+};
+
 canvas.addEventListener("mousedown", beginDrawing);
 canvas.addEventListener("touchstart", beginDrawing, { passive: true });
 canvas.addEventListener("mouseup", endDrawing);
 canvas.addEventListener("touchend", endDrawing, { passive: true });
 canvas.addEventListener("mousemove", draw);
 canvas.addEventListener("touchmove", draw, { passive: true });
+modeImg.addEventListener("click", changeMode);
