@@ -23,6 +23,7 @@ body,
 
 body {
   z-index: 1;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .wrapper {
@@ -85,6 +86,25 @@ body {
   margin: 10px;
   cursor: pointer;
 }
+.color-picker-button {
+  position: relative;
+}
+
+.color-picker-button img {
+  max-width: 60px;
+  height: auto;
+  position: relative;
+  z-index: 2;
+}
+
+.color-picker-button input {
+  position: absolute;
+  appearance: none;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+}
 
 button {
   font-size: large;
@@ -105,6 +125,10 @@ button {
     height: 30px;
     width: 30px;
     margin: 5px;
+  }
+
+  .color-picker-button img {
+    max-width: 36px;
   }
 
   #modeImg {
