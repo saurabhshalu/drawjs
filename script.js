@@ -18,6 +18,16 @@ const resize = () => {
 
 const changeColor = (e) => {
   selectedColor = e.target.style.backgroundColor;
+
+  if(!pencil) {
+    selectedSize = strokeSize.value;
+    modeImg.src = "https://img.icons8.com/ios-filled/50/000000/eraser.png";
+    document.querySelector(".canvasContainer").style.cursor =
+      " url(https://img.icons8.com/ios-filled/50/000000/pencil-tip.png) 0 50, auto";
+    pencil = true;
+  }
+  
+
 };
 
 window.onload = () => {
